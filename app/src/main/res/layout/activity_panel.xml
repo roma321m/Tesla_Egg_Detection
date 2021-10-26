@@ -33,7 +33,7 @@
             android:id="@+id/panel_LBL_score"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="4dp"
             android:textSize="36sp"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="6dp"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@drawable/ic_heart" />
 
         <ImageView
             android:id="@+id/panel_IMG_heart2"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="6dp"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@drawable/ic_heart" />
 
         <ImageView
             android:id="@+id/panel_IMG_heart1"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="6dp"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@drawable/ic_heart" />
 
     </LinearLayout>
 
@@ -79,13 +79,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:background="#FF0000">
+            android:background="#0FFF0000">
 
             <ImageView
                 android:id="@+id/panel_IMG_chicken_road1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:src="@drawable/chicken_white"/>
 
             <ListView
                 android:id="@+id/panel_LV_road1"
@@ -101,7 +102,8 @@
                 android:id="@+id/panel_IMG_tesla_road1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"/>
+                android:layout_weight="5"
+                android:src="@drawable/car"/>
         </LinearLayout>
 
         <LinearLayout
@@ -109,13 +111,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:background="#FFFF00">
+            android:background="#0FFFFF00">
 
             <ImageView
                 android:id="@+id/panel_IMG_chicken_road2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:src="@drawable/chicken_white"/>
 
             <ListView
                 android:id="@+id/panel_LV_road2"
@@ -131,7 +134,8 @@
                 android:id="@+id/panel_IMG_tesla_road2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"/>
+                android:layout_weight="5"
+                android:src="@drawable/car"/>
 
         </LinearLayout>
 
@@ -140,17 +144,18 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:background="#0000FF">
+            android:background="#0F0000FF">
 
             <ImageView
                 android:id="@+id/panel_IMG_chicken_road3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:src="@drawable/chicken_white"/>
 
             <ListView
                 android:id="@+id/panel_LV_road3"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="16"
                 android:textAlignment="center"
@@ -162,7 +167,8 @@
                 android:id="@+id/panel_IMG_tesla_road3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"/>
+                android:layout_weight="5"
+                android:src="@drawable/car"/>
 
         </LinearLayout>
 
