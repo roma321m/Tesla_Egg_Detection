@@ -60,7 +60,7 @@
         android:layout_margin="10dp">
 
         <LinearLayout
-            android:id="@+id/panel_LL_road1"
+            android:id="@+id/panel_LL_road0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -71,69 +71,68 @@
                 android:id="@+id/panel_IMG_chicken0"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/chicken_white"/>
+                android:layout_weight="2"/>
 
             <ImageView
                 android:id="@+id/panel_IMG_egg00"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg10"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg20"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg30"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg40"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg50"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg60"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg70"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg80"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg90"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/panel_IMG_tesla0"
@@ -153,69 +152,68 @@
                 android:id="@+id/panel_IMG_chicken1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/chicken_white"/>
+                android:layout_weight="2"/>
 
             <ImageView
                 android:id="@+id/panel_IMG_egg01"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg11"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg21"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg31"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg41"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg51"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg61"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg71"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg81"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg91"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/panel_IMG_tesla1"
@@ -236,69 +234,68 @@
                 android:id="@+id/panel_IMG_chicken2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/chicken_white"/>
+                android:layout_weight="2"/>
 
             <ImageView
                 android:id="@+id/panel_IMG_egg02"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg12"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg22"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg32"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/panel_IMG_egg42"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg52"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/panel_IMG_egg62"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg72"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg82"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg92"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/ic_heart" />
+                android:layout_gravity="center"
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/panel_IMG_tesla2"
@@ -319,26 +316,34 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/panel_BTN_left"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:text="left" />
+            android:background="@drawable/left"/>
 
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_weight="1" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/panel_BTN_right"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:text="right" />
+            android:background="@drawable/right"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
+
 </LinearLayout>
