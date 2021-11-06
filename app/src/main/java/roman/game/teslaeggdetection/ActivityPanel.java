@@ -1,6 +1,7 @@
 package roman.game.teslaeggdetection;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -8,15 +9,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class ActivityPanel extends AppCompatActivity {
 
-    private final int ROADS = 3;
-    private final int EGGS = 10;
+    private final int PERIOD = 1000; // 1000 milliseconds == 1 second
+    private final int DELAY = 0;
+    public static final int ROADS = 3;
+    public static final int EGGS = 10;
+
     private Button left;
     private Button right;
     private ImageView[][] views;
     private ImageView[] hearts;
-    private int[][] eggVisibility;
+
+    private DataManager data;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +34,46 @@ public class ActivityPanel extends AppCompatActivity {
 
         findViews();
         setPics();
+
+        data = DataManager.getInstance();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        startTicker();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    private void startTicker(){
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        data.updateVisibility();
+                        updateView(data.getVisibility());
+                    }
+                });
+            }
+        }, DELAY ,PERIOD);
+    }
+
+    private void updateView(int[][] data) {
+        for (int i = 0; i < ROADS; i++) {
+            for (int j = 0; j < EGGS+2; j++) {
+                if(data[j][i] > 0)
+                    views[j][i].setVisibility(View.VISIBLE);
+                else
+                    views[j][i].setVisibility(View.INVISIBLE);
+            }
+        }
     }
 
     private void findViews() {
