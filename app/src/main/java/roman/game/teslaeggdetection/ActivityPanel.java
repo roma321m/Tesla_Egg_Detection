@@ -45,6 +45,9 @@ public class ActivityPanel extends AppCompatActivity {
         panel_LBL_score.setVisibility(View.INVISIBLE); // for the next update
 
         data = DataManager.getInstance();
+
+        panel_BTN_left.setOnClickListener(v-> moveTheCar(-1));
+        panel_BTN_right.setOnClickListener(v-> moveTheCar(1));
     }
 
     @Override
@@ -57,6 +60,12 @@ public class ActivityPanel extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         stopTicker();
+    }
+
+    private void moveTheCar(int direction) {
+        data.moveTheCar(direction);
+        int[][] mat = data.getVisibility();
+        updateCarView(mat);
     }
 
     private void startTicker(){
@@ -81,17 +90,31 @@ public class ActivityPanel extends AppCompatActivity {
     private void updateView() {
         data.updateVisibility();
         int mat[][] = data.getVisibility();
+        updateChickenAndEggView(mat);
+        updateCarView(mat);
+        if(data.getHit())
+            updateLivesView();
+    }
+
+    private void updateCarView(int[][] mat) {
+        for(int i=0;i<ROADS;i++){
+            if(mat[EGGS+1][i] == 1)
+                panel_IMG_views[EGGS+1][i].setVisibility(View.VISIBLE);
+            else
+                panel_IMG_views[EGGS+1][i].setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void updateChickenAndEggView(int[][] mat){
         for (int i = 0; i < ROADS; i++) {
             checkChickenStatus(mat, i);
-            for (int j = 1; j < EGGS+2; j++) {
+            for (int j = 1; j <= EGGS; j++) {
                 if(mat[j][i] > 0)
                     panel_IMG_views[j][i].setVisibility(View.VISIBLE);
                 else
                     panel_IMG_views[j][i].setVisibility(View.INVISIBLE);
             }
         }
-        if(data.getHit())
-            updateLivesView();
     }
 
     private void checkChickenStatus(int mat[][], int road){

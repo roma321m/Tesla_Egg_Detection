@@ -1,9 +1,5 @@
 package roman.game.teslaeggdetection;
 
-import android.content.Context;
-import android.os.Build;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.util.Log;
 
 public class DataManager {
@@ -32,23 +28,23 @@ public class DataManager {
         return visibility;
     }
 
-    public boolean getHit(){
+    public boolean getHit() {
         return hit;
     }
 
-    private void setHit(boolean hit){
+    private void setHit(boolean hit) {
         this.hit = hit;
     }
 
-    private void setDropEgg(boolean dropEgg){
+    private void setDropEgg(boolean dropEgg) {
         this.dropEgg = dropEgg;
     }
 
-    public int getLives(){
+    public int getLives() {
         return lives;
     }
 
-    private void setLives(int lives){
+    private void setLives(int lives) {
         this.lives = lives;
     }
 
@@ -77,11 +73,11 @@ public class DataManager {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    private void checkHit(int road){
+    private void checkHit(int road) {
         if (visibility[ActivityPanel.EGGS][road] == 1) {
             visibility[ActivityPanel.EGGS][road] = 0;
             if (visibility[ActivityPanel.EGGS + 1][road] == 1) {
-                Log.i("Panel","egg hit the car");
+                Log.i("Panel", "egg hit the car");
                 setHit(true);
                 lives -= 1;
                 return;
@@ -108,6 +104,30 @@ public class DataManager {
                     visibility[1][i] = 1; // drop egg
                 }
             }
+        }
+    }
+
+    public void moveTheCar(int direction) {
+        int road = -1;
+        for (int i = 0; i < ActivityPanel.ROADS; i++) {
+            if (visibility[ActivityPanel.EGGS + 1][i] == 1) {
+                road = i;
+                break;
+            }
+        }
+        //left click
+        if (direction == -1) {
+            if (road <= 0)
+                return;
+            visibility[ActivityPanel.EGGS + 1][road] = 0;
+            visibility[ActivityPanel.EGGS + 1][road - 1] = 1;
+        }
+        // right click
+        else {
+            if (road >= ActivityPanel.ROADS - 1)
+                return;
+            visibility[ActivityPanel.EGGS + 1][road] = 0;
+            visibility[ActivityPanel.EGGS + 1][road + 1] = 1;
         }
     }
 }
