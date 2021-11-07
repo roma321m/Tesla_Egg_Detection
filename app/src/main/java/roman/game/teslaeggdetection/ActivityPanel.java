@@ -1,9 +1,14 @@
 package roman.game.teslaeggdetection;
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,11 +23,13 @@ public class ActivityPanel extends AppCompatActivity {
     private final int DELAY = 0;
     public static final int ROADS = 3;
     public static final int EGGS = 10;
+    public static final int MAX_LIVES = 3;
 
-    private Button left;
-    private Button right;
-    private ImageView[][] views;
-    private ImageView[] hearts;
+    private Button panel_BTN_left;
+    private Button panel_BTN_right;
+    private ImageView[][] panel_IMG_views;
+    private ImageView[] panel_IMG_hearts;
+    private TextView panel_LBL_score;
 
     private DataManager data;
     private Timer timer;
@@ -34,6 +41,8 @@ public class ActivityPanel extends AppCompatActivity {
 
         findViews();
         setPics();
+
+        panel_LBL_score.setVisibility(View.INVISIBLE); // for the next update
 
         data = DataManager.getInstance();
     }
@@ -47,6 +56,7 @@ public class ActivityPanel extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        stopTicker();
     }
 
     private void startTicker(){
@@ -57,30 +67,71 @@ public class ActivityPanel extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        data.updateVisibility();
-                        updateView(data.getVisibility());
+                        updateView();
                     }
                 });
             }
         }, DELAY ,PERIOD);
     }
 
-    private void updateView(int[][] data) {
+    private void stopTicker(){
+        timer.cancel();
+    }
+
+    private void updateView() {
+        data.updateVisibility();
+        int mat[][] = data.getVisibility();
         for (int i = 0; i < ROADS; i++) {
-            for (int j = 0; j < EGGS+2; j++) {
-                if(data[j][i] > 0)
-                    views[j][i].setVisibility(View.VISIBLE);
+            checkChickenStatus(mat, i);
+            for (int j = 1; j < EGGS+2; j++) {
+                if(mat[j][i] > 0)
+                    panel_IMG_views[j][i].setVisibility(View.VISIBLE);
                 else
-                    views[j][i].setVisibility(View.INVISIBLE);
+                    panel_IMG_views[j][i].setVisibility(View.INVISIBLE);
+            }
+        }
+        if(data.getHit())
+            updateLivesView();
+    }
+
+    private void checkChickenStatus(int mat[][], int road){
+        if(mat[0][road] == 1){
+            panel_IMG_views[0][road].setVisibility(View.VISIBLE);
+            panel_IMG_views[0][road].setImageResource(R.drawable.chicken1);
+        }else if(mat[0][road] == 2){
+            panel_IMG_views[0][road].setVisibility(View.VISIBLE);
+            panel_IMG_views[0][road].setImageResource(R.drawable.chicken2);
+        }else{
+            panel_IMG_views[0][road].setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void updateLivesView(){
+        makeVibration();
+        for (int i = 1; i <= MAX_LIVES; i++){
+            if (data.getLives() < i){
+                panel_IMG_hearts[i-1].setVisibility(View.INVISIBLE);
             }
         }
     }
 
+    private void makeVibration(){
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 500 milliseconds
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v.vibrate(100);
+        }
+    }
+
     private void findViews() {
-        left = findViewById(R.id.panel_BTN_left);
-        right = findViewById(R.id.panel_BTN_right);
-        hearts = new ImageView[]{findViewById(R.id.panel_IMG_heart1), findViewById(R.id.panel_IMG_heart2), findViewById(R.id.panel_IMG_heart3)};
-        views = new ImageView[][]{
+        panel_LBL_score = findViewById(R.id.panel_LBL_score);
+        panel_BTN_left = findViewById(R.id.panel_BTN_left);
+        panel_BTN_right = findViewById(R.id.panel_BTN_right);
+        panel_IMG_hearts = new ImageView[]{findViewById(R.id.panel_IMG_heart1), findViewById(R.id.panel_IMG_heart2), findViewById(R.id.panel_IMG_heart3)};
+        panel_IMG_views = new ImageView[][]{
                 {findViewById(R.id.panel_IMG_chicken0), findViewById(R.id.panel_IMG_chicken1), findViewById(R.id.panel_IMG_chicken2)},
                 {findViewById(R.id.panel_IMG_egg00), findViewById(R.id.panel_IMG_egg01), findViewById(R.id.panel_IMG_egg02)},
                 {findViewById(R.id.panel_IMG_egg10), findViewById(R.id.panel_IMG_egg11), findViewById(R.id.panel_IMG_egg12)},
@@ -100,14 +151,14 @@ public class ActivityPanel extends AppCompatActivity {
         for (int i = 0; i < ROADS; i++) {
             Glide
                     .with(this)
-                    .load(R.drawable.chicken1)
-                    .into(views[0][i]);
+                    .load(R.drawable.chicken2)
+                    .into(panel_IMG_views[0][i]);
         }
         for (int i = 0; i < ROADS; i++) {
             Glide
                     .with(this)
                     .load(R.drawable.car)
-                    .into(views[EGGS + 1][i]);
+                    .into(panel_IMG_views[EGGS + 1][i]);
         }
         for (int i = 0; i < ROADS; i++) {
             for (int j = 1; j < 4; j++) {
@@ -115,7 +166,7 @@ public class ActivityPanel extends AppCompatActivity {
                         .with(this)
                         .load(R.drawable.egg1)
                         .fitCenter()
-                        .into(views[j][i]);
+                        .into(panel_IMG_views[j][i]);
             }
 
             for (int j = 4; j < 7; j++) {
@@ -123,14 +174,14 @@ public class ActivityPanel extends AppCompatActivity {
                         .with(this)
                         .load(R.drawable.egg2)
                         .fitCenter()
-                        .into(views[j][i]);
+                        .into(panel_IMG_views[j][i]);
             }
             for (int j = 7; j <= EGGS; j++) {
                 Glide
                         .with(this)
                         .load(R.drawable.egg3)
                         .fitCenter()
-                        .into(views[j][i]);
+                        .into(panel_IMG_views[j][i]);
             }
         }
     }
