@@ -19,7 +19,7 @@ import java.util.TimerTask;
 
 public class ActivityPanel extends AppCompatActivity {
 
-    private final int PERIOD = 1000; // 1000 milliseconds == 1 second
+    private final int PERIOD = 500; // 1000 milliseconds == 1 second
     private final int DELAY = 0;
     public static final int ROADS = 3;
     public static final int EGGS = 10;
@@ -42,12 +42,10 @@ public class ActivityPanel extends AppCompatActivity {
         findViews();
         setPics();
 
-        panel_LBL_score.setVisibility(View.INVISIBLE); // for the next update
-
         data = DataManager.getInstance();
 
-        panel_BTN_left.setOnClickListener(v-> moveTheCar(-1));
-        panel_BTN_right.setOnClickListener(v-> moveTheCar(1));
+        panel_BTN_left.setOnClickListener(v -> moveTheCar(-1));
+        panel_BTN_right.setOnClickListener(v -> moveTheCar(1));
     }
 
     @Override
@@ -68,7 +66,7 @@ public class ActivityPanel extends AppCompatActivity {
         updateCarView(mat);
     }
 
-    private void startTicker(){
+    private void startTicker() {
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -80,10 +78,10 @@ public class ActivityPanel extends AppCompatActivity {
                     }
                 });
             }
-        }, DELAY ,PERIOD);
+        }, DELAY, PERIOD);
     }
 
-    private void stopTicker(){
+    private void stopTicker() {
         timer.cancel();
     }
 
@@ -92,53 +90,66 @@ public class ActivityPanel extends AppCompatActivity {
         int mat[][] = data.getVisibility();
         updateChickenAndEggView(mat);
         updateCarView(mat);
-        if(data.getHit())
-            updateLivesView();
+        updateLivesView();
+        updateScoreView();
+    }
+
+    private void updateScoreView() {
+        panel_LBL_score.setText(""+data.getScore());
     }
 
     private void updateCarView(int[][] mat) {
-        for(int i=0;i<ROADS;i++){
-            if(mat[EGGS+1][i] == 1)
-                panel_IMG_views[EGGS+1][i].setVisibility(View.VISIBLE);
+        for (int i = 0; i < ROADS; i++) {
+            if (mat[EGGS + 1][i] == 1)
+                panel_IMG_views[EGGS + 1][i].setVisibility(View.VISIBLE);
             else
-                panel_IMG_views[EGGS+1][i].setVisibility(View.INVISIBLE);
+                panel_IMG_views[EGGS + 1][i].setVisibility(View.INVISIBLE);
         }
     }
 
-    private void updateChickenAndEggView(int[][] mat){
+    private void updateChickenAndEggView(int[][] mat) {
         for (int i = 0; i < ROADS; i++) {
             checkChickenStatus(mat, i);
             for (int j = 1; j <= EGGS; j++) {
-                if(mat[j][i] > 0)
-                    panel_IMG_views[j][i].setVisibility(View.VISIBLE);
+                if (mat[j][i] > 0)
+                    panel_IMG_views[j][i].setVisibility(View.VISIBLE); // need to change the type of the image
                 else
                     panel_IMG_views[j][i].setVisibility(View.INVISIBLE);
             }
         }
     }
 
-    private void checkChickenStatus(int mat[][], int road){
-        if(mat[0][road] == 1){
+    private void checkChickenStatus(int mat[][], int road) {
+        if (mat[0][road] == 1) {
             panel_IMG_views[0][road].setVisibility(View.VISIBLE);
             panel_IMG_views[0][road].setImageResource(R.drawable.chicken1);
-        }else if(mat[0][road] == 2){
+        } else if (mat[0][road] == 2) {
             panel_IMG_views[0][road].setVisibility(View.VISIBLE);
             panel_IMG_views[0][road].setImageResource(R.drawable.chicken2);
-        }else{
+        } else {
             panel_IMG_views[0][road].setVisibility(View.INVISIBLE);
         }
     }
 
-    private void updateLivesView(){
-        makeVibration();
-        for (int i = 1; i <= MAX_LIVES; i++){
-            if (data.getLives() < i){
-                panel_IMG_hearts[i-1].setVisibility(View.INVISIBLE);
+    private void updateLivesView() {
+        //makeVibration(); // need to check if the lives dropped
+        for (int i = 1; i <= MAX_LIVES; i++) {
+            if (data.getLives() < i) {
+                panel_IMG_hearts[i - 1].setVisibility(View.INVISIBLE);
+                if (data.getLives() <= 0) {
+                    lostTheGame();
+                }
+            }else{
+                panel_IMG_hearts[i - 1].setVisibility(View.VISIBLE);
             }
         }
     }
 
-    private void makeVibration(){
+    private void lostTheGame() {
+        finish(); // temp solution
+    }
+
+    private void makeVibration() {
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         // Vibrate for 500 milliseconds
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
