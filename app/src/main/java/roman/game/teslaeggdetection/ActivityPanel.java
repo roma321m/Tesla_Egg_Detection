@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +21,7 @@ public class ActivityPanel extends AppCompatActivity {
     private final int PERIOD = 500; // 1000 milliseconds == 1 second
     private final int DELAY = 0;
     public static final int ROADS = 3;
-    public static final int EGGS = 10;
+    public static final int ITEMS = 10;
     public static final int MAX_LIVES = 3;
 
     private Button panel_BTN_left;
@@ -32,7 +31,12 @@ public class ActivityPanel extends AppCompatActivity {
     private TextView panel_LBL_score;
 
     private DataManager data;
+    private ViewManager view;
     private Timer timer;
+
+    private int lives;
+    private int score;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +44,13 @@ public class ActivityPanel extends AppCompatActivity {
         setContentView(R.layout.activity_panel);
 
         findViews();
-        setPics();
+        setStartPics();
 
         data = DataManager.getInstance();
+        view = ViewManager.getInstance();
+
+        lives = MAX_LIVES;
+        score = 0;
 
         panel_BTN_left.setOnClickListener(v -> moveTheCar(-1));
         panel_BTN_right.setOnClickListener(v -> moveTheCar(1));
@@ -63,7 +71,7 @@ public class ActivityPanel extends AppCompatActivity {
     private void moveTheCar(int direction) {
         data.moveTheCar(direction);
         int[][] mat = data.getVisibility();
-        updateCarView(mat);
+        view.updateCarView(mat, panel_IMG_views);
     }
 
     private void startTicker() {
@@ -74,7 +82,7 @@ public class ActivityPanel extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        updateView();
+                        update();
                     }
                 });
             }
@@ -85,63 +93,33 @@ public class ActivityPanel extends AppCompatActivity {
         timer.cancel();
     }
 
-    private void updateView() {
-        data.updateVisibility();
+    private void update() {
+        // update data
+        data.updateData();
         int mat[][] = data.getVisibility();
-        updateChickenAndEggView(mat);
-        updateCarView(mat);
-        updateLivesView();
-        updateScoreView();
-    }
 
-    private void updateScoreView() {
-        panel_LBL_score.setText(""+data.getScore());
-    }
+        // update view
+        view.updateChickenAndEggView(mat, panel_IMG_views);
+        view.updateCarView(mat, panel_IMG_views);
 
-    private void updateCarView(int[][] mat) {
-        for (int i = 0; i < ROADS; i++) {
-            if (mat[EGGS + 1][i] == 1)
-                panel_IMG_views[EGGS + 1][i].setVisibility(View.VISIBLE);
-            else
-                panel_IMG_views[EGGS + 1][i].setVisibility(View.INVISIBLE);
-        }
-    }
-
-    private void updateChickenAndEggView(int[][] mat) {
-        for (int i = 0; i < ROADS; i++) {
-            checkChickenStatus(mat, i);
-            for (int j = 1; j <= EGGS; j++) {
-                if (mat[j][i] > 0)
-                    panel_IMG_views[j][i].setVisibility(View.VISIBLE); // need to change the type of the image
-                else
-                    panel_IMG_views[j][i].setVisibility(View.INVISIBLE);
+        // update lives
+        int dataLives = data.getLives();
+        if(dataLives != lives){
+            // egg hit the car-> make vibration
+            if(lives > dataLives)
+                makeVibration();
+            lives = dataLives;
+            view.updateLivesView(lives, panel_IMG_hearts);
+            if(lives < 1){
+                lostTheGame();
             }
         }
-    }
 
-    private void checkChickenStatus(int mat[][], int road) {
-        if (mat[0][road] == 1) {
-            panel_IMG_views[0][road].setVisibility(View.VISIBLE);
-            panel_IMG_views[0][road].setImageResource(R.drawable.chicken1);
-        } else if (mat[0][road] == 2) {
-            panel_IMG_views[0][road].setVisibility(View.VISIBLE);
-            panel_IMG_views[0][road].setImageResource(R.drawable.chicken2);
-        } else {
-            panel_IMG_views[0][road].setVisibility(View.INVISIBLE);
-        }
-    }
-
-    private void updateLivesView() {
-        //makeVibration(); // need to check if the lives dropped
-        for (int i = 1; i <= MAX_LIVES; i++) {
-            if (data.getLives() < i) {
-                panel_IMG_hearts[i - 1].setVisibility(View.INVISIBLE);
-                if (data.getLives() <= 0) {
-                    lostTheGame();
-                }
-            }else{
-                panel_IMG_hearts[i - 1].setVisibility(View.VISIBLE);
-            }
+        // update score
+        int dataScore = data.getScore();
+        if (score != dataScore){
+            score = dataScore;
+            view.updateScoreView(score, panel_LBL_score);
         }
     }
 
@@ -181,7 +159,7 @@ public class ActivityPanel extends AppCompatActivity {
         };
     }
 
-    private void setPics() {
+    private void setStartPics() {
         for (int i = 0; i < ROADS; i++) {
             Glide
                     .with(this)
@@ -192,7 +170,7 @@ public class ActivityPanel extends AppCompatActivity {
             Glide
                     .with(this)
                     .load(R.drawable.car)
-                    .into(panel_IMG_views[EGGS + 1][i]);
+                    .into(panel_IMG_views[ITEMS + 1][i]);
         }
         for (int i = 0; i < ROADS; i++) {
             for (int j = 1; j < 4; j++) {
@@ -210,7 +188,7 @@ public class ActivityPanel extends AppCompatActivity {
                         .fitCenter()
                         .into(panel_IMG_views[j][i]);
             }
-            for (int j = 7; j <= EGGS; j++) {
+            for (int j = 7; j <= ITEMS; j++) {
                 Glide
                         .with(this)
                         .load(R.drawable.egg3)
