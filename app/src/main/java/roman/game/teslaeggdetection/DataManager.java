@@ -88,7 +88,8 @@ public class DataManager {
             } else if (visibility[ActivityPanel.ITEMS][road] == DropManager.LIVE) {
                 if (visibility[ActivityPanel.ITEMS + 1][road] == 1) {
                     Log.i("Panel", "heart hit the car");
-                    setLives(lives + 1);
+                    if(lives < ActivityPanel.MAX_LIVES)
+                        setLives(lives + 1);
                 } else {
                     Log.i("Panel", "heart hit the ground");
                 }
