@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -51,14 +49,13 @@ public class ActivityPanel extends AppCompatActivity {
         this.setContentView(R.layout.activity_panel);
 
         findViews();
+        lives = MAX_LIVES;
+        score = 0;
 
         data = DataManager.getInstance();
         view = GamePageViewManager.getInstance();
 
         view.setStartPics(panel_IMG_views);
-
-        lives = MAX_LIVES;
-        score = 0;
 
         panel_BTN_left.setOnClickListener(v -> moveTheCar(-1));
         panel_BTN_right.setOnClickListener(v -> moveTheCar(1));

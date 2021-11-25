@@ -21,6 +21,11 @@ public class DataManager {
     public static DataManager getInstance() {
         if (single_instance == null) {
             single_instance = new DataManager();
+        }else {
+            single_instance.setDropEgg(false);
+            single_instance.setScore(0);
+            single_instance.setLives(ActivityPanel.MAX_LIVES);
+            single_instance.setVisibilitySize(ActivityPanel.ROADS, ActivityPanel.ITEMS);
         }
         return single_instance;
     }
