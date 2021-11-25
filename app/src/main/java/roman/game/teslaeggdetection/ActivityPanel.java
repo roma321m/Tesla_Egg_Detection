@@ -33,7 +33,7 @@ public class ActivityPanel extends AppCompatActivity {
     private TextView panel_LBL_score;
 
     private DataManager data;
-    private ViewManager view;
+    private GamePageViewManager view;
     private Timer timer;
 
     private int lives;
@@ -51,10 +51,11 @@ public class ActivityPanel extends AppCompatActivity {
         this.setContentView(R.layout.activity_panel);
 
         findViews();
-        setStartPics();
 
         data = DataManager.getInstance();
-        view = ViewManager.getInstance();
+        view = GamePageViewManager.getInstance();
+
+        view.setStartPics(panel_IMG_views);
 
         lives = MAX_LIVES;
         score = 0;
@@ -166,42 +167,4 @@ public class ActivityPanel extends AppCompatActivity {
         };
     }
 
-    private void setStartPics() {
-        for (int i = 0; i < ROADS; i++) {
-            Glide
-                    .with(this)
-                    .load(R.drawable.chicken2)
-                    .into(panel_IMG_views[0][i]);
-        }
-        for (int i = 0; i < ROADS; i++) {
-            Glide
-                    .with(this)
-                    .load(R.drawable.car)
-                    .into(panel_IMG_views[ITEMS + 1][i]);
-        }
-        for (int i = 0; i < ROADS; i++) {
-            for (int j = 1; j < 4; j++) {
-                Glide
-                        .with(this)
-                        .load(R.drawable.egg1)
-                        .fitCenter()
-                        .into(panel_IMG_views[j][i]);
-            }
-
-            for (int j = 4; j < 7; j++) {
-                Glide
-                        .with(this)
-                        .load(R.drawable.egg2)
-                        .fitCenter()
-                        .into(panel_IMG_views[j][i]);
-            }
-            for (int j = 7; j <= ITEMS; j++) {
-                Glide
-                        .with(this)
-                        .load(R.drawable.egg3)
-                        .fitCenter()
-                        .into(panel_IMG_views[j][i]);
-            }
-        }
-    }
 }
