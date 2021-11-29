@@ -32,14 +32,14 @@ public class GamePageViewManager {
             for (int j = 1; j <= ActivityPanel.ITEMS; j++) {
                 if (mat[j][i] == DropManager.EGG) {
                     if (1 <= j && j < 4)
-                        Glide.with(context).load(R.drawable.egg1).into(panel_IMG_views[j][i]);
+                        Glide.with(context).load(R.drawable.img_egg1).into(panel_IMG_views[j][i]);
                     else if (4 <= j && j < 7)
-                        Glide.with(context).load(R.drawable.egg2).into(panel_IMG_views[j][i]);
+                        Glide.with(context).load(R.drawable.img_egg2).into(panel_IMG_views[j][i]);
                     else if (7 <= j && j <= ActivityPanel.ITEMS)
-                        Glide.with(context).load(R.drawable.egg3).into(panel_IMG_views[j][i]);
+                        Glide.with(context).load(R.drawable.img_egg3).into(panel_IMG_views[j][i]);
                     panel_IMG_views[j][i].setVisibility(View.VISIBLE);
                 } else if (mat[j][i] == DropManager.COIN) {
-                    Glide.with(context).load(R.drawable.coin).into(panel_IMG_views[j][i]);
+                    Glide.with(context).load(R.drawable.img_coin).into(panel_IMG_views[j][i]);
                     panel_IMG_views[j][i].setVisibility(View.VISIBLE);
                 } else if (mat[j][i] == DropManager.LIVE) {
                     Glide.with(context).load(R.drawable.ic_heart).into(panel_IMG_views[j][i]);
@@ -52,10 +52,10 @@ public class GamePageViewManager {
 
     public void checkChickenStatus(int mat[][], int road, ImageView[][] panel_IMG_views) {
         if (mat[0][road] == 1) {
-            Glide.with(context).load(R.drawable.chicken1).into(panel_IMG_views[0][road]);
+            Glide.with(context).load(R.drawable.img_chicken1).into(panel_IMG_views[0][road]);
             panel_IMG_views[0][road].setVisibility(View.VISIBLE);
         } else if (mat[0][road] == 2) {
-            Glide.with(context).load(R.drawable.chicken2).into(panel_IMG_views[0][road]);
+            Glide.with(context).load(R.drawable.img_chicken2).into(panel_IMG_views[0][road]);
             panel_IMG_views[0][road].setVisibility(View.VISIBLE);
         } else {
             panel_IMG_views[0][road].setVisibility(View.INVISIBLE);
@@ -87,21 +87,21 @@ public class GamePageViewManager {
 
     public void setStartPics(ImageView[][] panel_IMG_views) {
         for (int i = 0; i < ActivityPanel.ROADS; i++) {
-            Glide.with(context).load(R.drawable.chicken2).into(panel_IMG_views[0][i]);
+            Glide.with(context).load(R.drawable.img_chicken2).into(panel_IMG_views[0][i]);
         }
         for (int i = 0; i < ActivityPanel.ROADS; i++) {
-            Glide.with(context).load(R.drawable.car).into(panel_IMG_views[ActivityPanel.ITEMS + 1][i]);
+            Glide.with(context).load(R.drawable.img_car).into(panel_IMG_views[ActivityPanel.ITEMS + 1][i]);
         }
         for (int i = 0; i < ActivityPanel.ROADS; i++) {
             for (int j = 1; j < 4; j++) {
-                Glide.with(context).load(R.drawable.egg1).fitCenter().into(panel_IMG_views[j][i]);
+                Glide.with(context).load(R.drawable.img_egg1).fitCenter().into(panel_IMG_views[j][i]);
             }
 
             for (int j = 4; j < 7; j++) {
-                Glide.with(context).load(R.drawable.egg2).fitCenter().into(panel_IMG_views[j][i]);
+                Glide.with(context).load(R.drawable.img_egg2).fitCenter().into(panel_IMG_views[j][i]);
             }
             for (int j = 7; j <= ActivityPanel.ITEMS; j++) {
-                Glide.with(context).load(R.drawable.egg3).fitCenter().into(panel_IMG_views[j][i]);
+                Glide.with(context).load(R.drawable.img_egg3).fitCenter().into(panel_IMG_views[j][i]);
             }
         }
     }

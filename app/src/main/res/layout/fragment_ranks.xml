@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityRanks"
+    tools:context=".ActivityLeaderBoard"
     android:background="#BEFFE9"
     android:layout_margin="5dp">
 

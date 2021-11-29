@@ -37,7 +37,7 @@
             android:exported="true"/>
 
         <activity
-            android:name=".ActivityRanks"
+            android:name=".ActivityLeaderBoard"
             android:exported="true"/>
 
     </application>

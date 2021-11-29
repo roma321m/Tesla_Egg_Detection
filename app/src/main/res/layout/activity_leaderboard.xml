@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityRanks"
+    tools:context=".ActivityLeaderBoard"
     android:keepScreenOn="true">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -16,7 +16,7 @@
         android:padding="15dp">
 
         <TextView
-            android:id="@+id/info"
+            android:id="@+id/leaderboard_LBL_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LeaderBoard"
@@ -24,15 +24,15 @@
             android:textSize="30sp" />
 
         <FrameLayout
-            android:id="@+id/fragment_ranks"
+            android:id="@+id/leaderboard_fragment_ranks"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="#C4ECB7"
-            android:layout_margin="5dp"/>
+            android:background="#C4ECB7" />
 
         <FrameLayout
-            android:id="@+id/fragment_map"
+            android:id="@+id/leaderboard_fragment_map"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"

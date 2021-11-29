@@ -8,7 +8,7 @@
     tools:context=".ActivityPanel"
     android:orientation="vertical"
     tools:ignore="ExtraText"
-    android:background="@drawable/sky">
+    android:background="@drawable/img_sky">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="4dp"
-            android:src="@drawable/coin" />
+            android:src="@drawable/img_coin" />
 
         <TextView
             android:id="@+id/panel_LBL_score"
@@ -72,7 +72,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:background="@drawable/road">
+            android:background="@drawable/img_road">
 
             <ImageView
                 android:id="@+id/panel_IMG_chicken0"
@@ -153,7 +153,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:background="@drawable/road">
+            android:background="@drawable/img_road">
 
             <ImageView
                 android:id="@+id/panel_IMG_chicken1"
@@ -235,7 +235,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:background="@drawable/road">
+            android:background="@drawable/img_road">
 
             <ImageView
                 android:id="@+id/panel_IMG_chicken2"
@@ -333,7 +333,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/left"/>
+            android:background="@drawable/img_left"/>
 
         <View
             android:layout_width="0dp"
@@ -345,7 +345,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/right"/>
+            android:background="@drawable/img_right"/>
 
         <View
             android:layout_width="0dp"
