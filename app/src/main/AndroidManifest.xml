@@ -31,9 +31,15 @@
         <activity
             android:name=".ActivityPanel"
             android:exported="true"/>
+
         <activity
             android:name=".ActivityMainMenu"
             android:exported="true"/>
+
+        <activity
+            android:name=".ActivityRanks"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

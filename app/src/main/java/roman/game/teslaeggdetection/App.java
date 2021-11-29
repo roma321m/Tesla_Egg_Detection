@@ -8,5 +8,6 @@ public class App extends Application {
         super.onCreate();
 
         GamePageViewManager.initHelper(this);
+        MSP.initHelper(this);
     }
 }
