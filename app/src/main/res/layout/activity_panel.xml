@@ -140,6 +140,18 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg100"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg110"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/panel_IMG_tesla0"
@@ -217,6 +229,18 @@
                 android:layout_weight="1" />
             <ImageView
                 android:id="@+id/panel_IMG_egg91"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg101"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg111"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
@@ -303,9 +327,209 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg102"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg112"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/panel_IMG_tesla2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/img_road">
+
+            <ImageView
+                android:id="@+id/panel_IMG_chicken3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"/>
+
+            <ImageView
+                android:id="@+id/panel_IMG_egg03"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg13"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg23"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg33"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/panel_IMG_egg43"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg53"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/panel_IMG_egg63"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg73"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg83"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg93"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg103"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg113"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_tesla3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/img_road">
+
+            <ImageView
+                android:id="@+id/panel_IMG_chicken4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"/>
+
+            <ImageView
+                android:id="@+id/panel_IMG_egg04"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg14"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg24"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg34"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/panel_IMG_egg44"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg54"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/panel_IMG_egg64"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg74"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg84"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg94"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg104"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/panel_IMG_egg114"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/panel_IMG_tesla4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"/>

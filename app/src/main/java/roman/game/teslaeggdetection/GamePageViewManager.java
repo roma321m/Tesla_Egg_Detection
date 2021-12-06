@@ -8,6 +8,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 public class GamePageViewManager {
+    private static final int ITEMS = ActivityPanel.ITEMS;
+    private static final int ROADS = ActivityPanel.ROADS;
+    private static final int MAX_LIVES = ActivityPanel.MAX_LIVES;
+
     private static GamePageViewManager single_instance = null;
     private Context context;
 
@@ -27,15 +31,15 @@ public class GamePageViewManager {
     }
 
     public void updateChickenAndEggView(int[][] mat, ImageView[][] panel_IMG_views) {
-        for (int i = 0; i < ActivityPanel.ROADS; i++) {
+        for (int i = 0; i < ROADS; i++) {
             checkChickenStatus(mat, i, panel_IMG_views);
-            for (int j = 1; j <= ActivityPanel.ITEMS; j++) {
+            for (int j = 1; j <= ITEMS; j++) {
                 if (mat[j][i] == DropManager.EGG) {
                     if (1 <= j && j < 4)
                         Glide.with(context).load(R.drawable.img_egg1).into(panel_IMG_views[j][i]);
                     else if (4 <= j && j < 7)
                         Glide.with(context).load(R.drawable.img_egg2).into(panel_IMG_views[j][i]);
-                    else if (7 <= j && j <= ActivityPanel.ITEMS)
+                    else if (7 <= j && j <= ITEMS)
                         Glide.with(context).load(R.drawable.img_egg3).into(panel_IMG_views[j][i]);
                     panel_IMG_views[j][i].setVisibility(View.VISIBLE);
                 } else if (mat[j][i] == DropManager.COIN) {
@@ -67,16 +71,16 @@ public class GamePageViewManager {
     }
 
     public void updateCarView(int[][] mat, ImageView[][] panel_IMG_views) {
-        for (int i = 0; i < ActivityPanel.ROADS; i++) {
-            if (mat[ActivityPanel.ITEMS + 1][i] == 1)
-                panel_IMG_views[ActivityPanel.ITEMS + 1][i].setVisibility(View.VISIBLE);
+        for (int i = 0; i < ROADS; i++) {
+            if (mat[ITEMS + 1][i] == 1)
+                panel_IMG_views[ITEMS + 1][i].setVisibility(View.VISIBLE);
             else
-                panel_IMG_views[ActivityPanel.ITEMS + 1][i].setVisibility(View.INVISIBLE);
+                panel_IMG_views[ITEMS + 1][i].setVisibility(View.INVISIBLE);
         }
     }
 
     public void updateLivesView(int lives, ImageView[] panel_IMG_hearts) {
-        for (int i = 1; i <= ActivityPanel.MAX_LIVES; i++) {
+        for (int i = 1; i <= MAX_LIVES; i++) {
             if (lives < i) {
                 panel_IMG_hearts[i - 1].setVisibility(View.INVISIBLE);
             } else {
@@ -86,13 +90,13 @@ public class GamePageViewManager {
     }
 
     public void setStartPics(ImageView[][] panel_IMG_views) {
-        for (int i = 0; i < ActivityPanel.ROADS; i++) {
+        for (int i = 0; i < ROADS; i++) {
             Glide.with(context).load(R.drawable.img_chicken2).into(panel_IMG_views[0][i]);
         }
-        for (int i = 0; i < ActivityPanel.ROADS; i++) {
-            Glide.with(context).load(R.drawable.img_car).into(panel_IMG_views[ActivityPanel.ITEMS + 1][i]);
+        for (int i = 0; i < ROADS; i++) {
+            Glide.with(context).load(R.drawable.img_car).into(panel_IMG_views[ITEMS + 1][i]);
         }
-        for (int i = 0; i < ActivityPanel.ROADS; i++) {
+        for (int i = 0; i < ROADS; i++) {
             for (int j = 1; j < 4; j++) {
                 Glide.with(context).load(R.drawable.img_egg1).fitCenter().into(panel_IMG_views[j][i]);
             }
@@ -100,7 +104,7 @@ public class GamePageViewManager {
             for (int j = 4; j < 7; j++) {
                 Glide.with(context).load(R.drawable.img_egg2).fitCenter().into(panel_IMG_views[j][i]);
             }
-            for (int j = 7; j <= ActivityPanel.ITEMS; j++) {
+            for (int j = 7; j <= ITEMS; j++) {
                 Glide.with(context).load(R.drawable.img_egg3).fitCenter().into(panel_IMG_views[j][i]);
             }
         }

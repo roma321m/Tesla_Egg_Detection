@@ -3,6 +3,10 @@ package roman.game.teslaeggdetection;
 import android.util.Log;
 
 public class DataManager {
+    private static final int ITEMS = ActivityPanel.ITEMS;
+    private static final int ROADS = ActivityPanel.ROADS;
+    private static final int MAX_LIVES = ActivityPanel.MAX_LIVES;
+
     private static DataManager single_instance = null;
     private int[][] visibility;
     private boolean dropEgg;
@@ -14,8 +18,8 @@ public class DataManager {
         dropManager = new DropManager();
         setDropEgg(false);
         setScore(0);
-        setLives(ActivityPanel.MAX_LIVES);
-        setVisibilitySize(ActivityPanel.ROADS, ActivityPanel.ITEMS);
+        setLives(MAX_LIVES);
+        setVisibilitySize(ROADS, ITEMS);
     }
 
     public static DataManager getInstance() {
@@ -24,8 +28,8 @@ public class DataManager {
         }else {
             single_instance.setDropEgg(false);
             single_instance.setScore(0);
-            single_instance.setLives(ActivityPanel.MAX_LIVES);
-            single_instance.setVisibilitySize(ActivityPanel.ROADS, ActivityPanel.ITEMS);
+            single_instance.setLives(MAX_LIVES);
+            single_instance.setVisibilitySize(ROADS, ITEMS);
         }
         return single_instance;
     }
@@ -63,9 +67,9 @@ public class DataManager {
     }
 
     public void updateData() {
-        for (int i = 0; i < ActivityPanel.ROADS; i++) {
+        for (int i = 0; i < ROADS; i++) {
             checkLastStep(i);
-            for (int j = ActivityPanel.ITEMS; j >= 2; j--) {
+            for (int j = ITEMS; j >= 2; j--) {
                 if (visibility[j - 1][i] > 0) {
                     visibility[j][i] = visibility[j - 1][i];
                     visibility[j - 1][i] = 0;
@@ -76,30 +80,30 @@ public class DataManager {
     }
 
     private void checkLastStep(int road) {
-        if (visibility[ActivityPanel.ITEMS][road] > 0) {
-            if (visibility[ActivityPanel.ITEMS][road] == DropManager.EGG) {
-                if (visibility[ActivityPanel.ITEMS + 1][road] == 1) {
+        if (visibility[ITEMS][road] > 0) {
+            if (visibility[ITEMS][road] == DropManager.EGG) {
+                if (visibility[ITEMS + 1][road] == 1) {
                     Log.i("Panel", "Egg hit the car");
                     setLives(lives - 1);
                 } else
                     Log.i("Panel", "Egg hit the ground");
-            } else if (visibility[ActivityPanel.ITEMS][road] == DropManager.COIN) {
-                if (visibility[ActivityPanel.ITEMS + 1][road] == 1) {
+            } else if (visibility[ITEMS][road] == DropManager.COIN) {
+                if (visibility[ITEMS + 1][road] == 1) {
                     Log.i("Panel", "coin hit the car");
                     setScore(score + 100);
                 } else {
                     Log.i("Panel", "Coin hit the ground");
                 }
-            } else if (visibility[ActivityPanel.ITEMS][road] == DropManager.LIVE) {
-                if (visibility[ActivityPanel.ITEMS + 1][road] == 1) {
+            } else if (visibility[ITEMS][road] == DropManager.LIVE) {
+                if (visibility[ITEMS + 1][road] == 1) {
                     Log.i("Panel", "heart hit the car");
-                    if(lives < ActivityPanel.MAX_LIVES)
+                    if(lives < MAX_LIVES)
                         setLives(lives + 1);
                 } else {
                     Log.i("Panel", "heart hit the ground");
                 }
             }
-            visibility[ActivityPanel.ITEMS][road] = 0;
+            visibility[ITEMS][road] = 0;
         }
     }
 
@@ -107,7 +111,7 @@ public class DataManager {
         if (dropEgg == false) {
             setDropEgg(true);
             dropManager.setNextDrop(lives);
-            for (int i = 0; i < ActivityPanel.ROADS; i++) {
+            for (int i = 0; i < ROADS; i++) {
                 if (i == dropManager.getLastRoad())
                     visibility[0][i] = 1; //move the chicken
                 else
@@ -115,7 +119,7 @@ public class DataManager {
             }
         } else {
             setDropEgg(false);
-            for (int i = 0; i < ActivityPanel.ROADS; i++) {
+            for (int i = 0; i < ROADS; i++) {
                 if (visibility[0][i] == 1) {
                     visibility[0][i] = 2; // change chicken image
                     visibility[1][i] = dropManager.getLastType(); // drop last type
@@ -126,8 +130,8 @@ public class DataManager {
 
     public void moveTheCar(int direction) {
         int road = -1;
-        for (int i = 0; i < ActivityPanel.ROADS; i++) {
-            if (visibility[ActivityPanel.ITEMS + 1][i] == 1) {
+        for (int i = 0; i < ROADS; i++) {
+            if (visibility[ITEMS + 1][i] == 1) {
                 road = i;
                 break;
             }
@@ -136,15 +140,15 @@ public class DataManager {
         if (direction == -1) {
             if (road <= 0)
                 return;
-            visibility[ActivityPanel.ITEMS + 1][road] = 0;
-            visibility[ActivityPanel.ITEMS + 1][road - 1] = 1;
+            visibility[ITEMS + 1][road] = 0;
+            visibility[ITEMS + 1][road - 1] = 1;
         }
         // right click
         else {
-            if (road >= ActivityPanel.ROADS - 1)
+            if (road >= ROADS - 1)
                 return;
-            visibility[ActivityPanel.ITEMS + 1][road] = 0;
-            visibility[ActivityPanel.ITEMS + 1][road + 1] = 1;
+            visibility[ITEMS + 1][road] = 0;
+            visibility[ITEMS + 1][road + 1] = 1;
         }
     }
 }

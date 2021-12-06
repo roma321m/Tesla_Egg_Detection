@@ -20,8 +20,8 @@ public class ActivityPanel extends AppCompatActivity {
 
     private final int PERIOD = 500; // 1000 milliseconds == 1 second
     private final int DELAY = 0;
-    public static final int ROADS = 3;
-    public static final int ITEMS = 10;
+    public static final int ROADS = 5;
+    public static final int ITEMS = 12;
     public static final int MAX_LIVES = 3;
 
     private Button panel_BTN_left;
@@ -149,18 +149,20 @@ public class ActivityPanel extends AppCompatActivity {
         panel_BTN_right = findViewById(R.id.panel_BTN_right);
         panel_IMG_hearts = new ImageView[]{findViewById(R.id.panel_IMG_heart1), findViewById(R.id.panel_IMG_heart2), findViewById(R.id.panel_IMG_heart3)};
         panel_IMG_views = new ImageView[][]{
-                {findViewById(R.id.panel_IMG_chicken0), findViewById(R.id.panel_IMG_chicken1), findViewById(R.id.panel_IMG_chicken2)},
-                {findViewById(R.id.panel_IMG_egg00), findViewById(R.id.panel_IMG_egg01), findViewById(R.id.panel_IMG_egg02)},
-                {findViewById(R.id.panel_IMG_egg10), findViewById(R.id.panel_IMG_egg11), findViewById(R.id.panel_IMG_egg12)},
-                {findViewById(R.id.panel_IMG_egg20), findViewById(R.id.panel_IMG_egg21), findViewById(R.id.panel_IMG_egg22)},
-                {findViewById(R.id.panel_IMG_egg30), findViewById(R.id.panel_IMG_egg31), findViewById(R.id.panel_IMG_egg32)},
-                {findViewById(R.id.panel_IMG_egg40), findViewById(R.id.panel_IMG_egg41), findViewById(R.id.panel_IMG_egg42)},
-                {findViewById(R.id.panel_IMG_egg50), findViewById(R.id.panel_IMG_egg51), findViewById(R.id.panel_IMG_egg52)},
-                {findViewById(R.id.panel_IMG_egg60), findViewById(R.id.panel_IMG_egg61), findViewById(R.id.panel_IMG_egg62)},
-                {findViewById(R.id.panel_IMG_egg70), findViewById(R.id.panel_IMG_egg71), findViewById(R.id.panel_IMG_egg72)},
-                {findViewById(R.id.panel_IMG_egg80), findViewById(R.id.panel_IMG_egg81), findViewById(R.id.panel_IMG_egg82)},
-                {findViewById(R.id.panel_IMG_egg90), findViewById(R.id.panel_IMG_egg91), findViewById(R.id.panel_IMG_egg92)},
-                {findViewById(R.id.panel_IMG_tesla0), findViewById(R.id.panel_IMG_tesla1), findViewById(R.id.panel_IMG_tesla2)}
+                {findViewById(R.id.panel_IMG_chicken0), findViewById(R.id.panel_IMG_chicken1), findViewById(R.id.panel_IMG_chicken2), findViewById(R.id.panel_IMG_chicken3), findViewById(R.id.panel_IMG_chicken4)},
+                {findViewById(R.id.panel_IMG_egg00), findViewById(R.id.panel_IMG_egg01), findViewById(R.id.panel_IMG_egg02), findViewById(R.id.panel_IMG_egg03), findViewById(R.id.panel_IMG_egg04)},
+                {findViewById(R.id.panel_IMG_egg10), findViewById(R.id.panel_IMG_egg11), findViewById(R.id.panel_IMG_egg12), findViewById(R.id.panel_IMG_egg13), findViewById(R.id.panel_IMG_egg14)},
+                {findViewById(R.id.panel_IMG_egg20), findViewById(R.id.panel_IMG_egg21), findViewById(R.id.panel_IMG_egg22), findViewById(R.id.panel_IMG_egg23), findViewById(R.id.panel_IMG_egg24)},
+                {findViewById(R.id.panel_IMG_egg30), findViewById(R.id.panel_IMG_egg31), findViewById(R.id.panel_IMG_egg32), findViewById(R.id.panel_IMG_egg33), findViewById(R.id.panel_IMG_egg34)},
+                {findViewById(R.id.panel_IMG_egg40), findViewById(R.id.panel_IMG_egg41), findViewById(R.id.panel_IMG_egg42), findViewById(R.id.panel_IMG_egg43), findViewById(R.id.panel_IMG_egg44)},
+                {findViewById(R.id.panel_IMG_egg50), findViewById(R.id.panel_IMG_egg51), findViewById(R.id.panel_IMG_egg52), findViewById(R.id.panel_IMG_egg53), findViewById(R.id.panel_IMG_egg54)},
+                {findViewById(R.id.panel_IMG_egg60), findViewById(R.id.panel_IMG_egg61), findViewById(R.id.panel_IMG_egg62), findViewById(R.id.panel_IMG_egg63), findViewById(R.id.panel_IMG_egg64)},
+                {findViewById(R.id.panel_IMG_egg70), findViewById(R.id.panel_IMG_egg71), findViewById(R.id.panel_IMG_egg72), findViewById(R.id.panel_IMG_egg73), findViewById(R.id.panel_IMG_egg74)},
+                {findViewById(R.id.panel_IMG_egg80), findViewById(R.id.panel_IMG_egg81), findViewById(R.id.panel_IMG_egg82), findViewById(R.id.panel_IMG_egg83), findViewById(R.id.panel_IMG_egg84)},
+                {findViewById(R.id.panel_IMG_egg90), findViewById(R.id.panel_IMG_egg91), findViewById(R.id.panel_IMG_egg92), findViewById(R.id.panel_IMG_egg93), findViewById(R.id.panel_IMG_egg94)},
+                {findViewById(R.id.panel_IMG_egg100), findViewById(R.id.panel_IMG_egg101), findViewById(R.id.panel_IMG_egg102), findViewById(R.id.panel_IMG_egg103), findViewById(R.id.panel_IMG_egg104)},
+                {findViewById(R.id.panel_IMG_egg110), findViewById(R.id.panel_IMG_egg111), findViewById(R.id.panel_IMG_egg112), findViewById(R.id.panel_IMG_egg113), findViewById(R.id.panel_IMG_egg114)},
+                {findViewById(R.id.panel_IMG_tesla0), findViewById(R.id.panel_IMG_tesla1), findViewById(R.id.panel_IMG_tesla2), findViewById(R.id.panel_IMG_tesla3), findViewById(R.id.panel_IMG_tesla4)}
         };
     }
 

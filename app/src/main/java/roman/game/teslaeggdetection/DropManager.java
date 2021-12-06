@@ -1,7 +1,11 @@
 package roman.game.teslaeggdetection;
 
 public class DropManager {
+    private static final int ITEMS = ActivityPanel.ITEMS;
+    private static final int ROADS = ActivityPanel.ROADS;
+    private static final int MAX_LIVES = ActivityPanel.MAX_LIVES;
     public static final int EGG = 1, COIN = 2, LIVE = 3;
+
     private int lastRoad;
     private int lastType;
     private int livesPercentage, eggsPercentage, coinsPercentage;
@@ -56,7 +60,7 @@ public class DropManager {
         // 1=egg, 2=coin, 3=live
         int total = livesPercentage + coinsPercentage + eggsPercentage;
         int percentage = getRandomNumber(1, total + 1);
-        if (livesLeft == ActivityPanel.MAX_LIVES || heartInTheActivity > 0) {
+        if (livesLeft == MAX_LIVES || heartInTheActivity > 0) {
             if (heartInTheActivity > 0)
                 setHeartInTheActivity(heartInTheActivity-1);
             if (percentage <= eggsPercentage)
@@ -68,7 +72,7 @@ public class DropManager {
         if (percentage <= eggsPercentage + coinsPercentage)
             return COIN;
         // as long as the heart in the activity can't drop another one
-        setHeartInTheActivity(ActivityPanel.ITEMS);
+        setHeartInTheActivity(ITEMS);
         return LIVE;
     }
 
@@ -78,9 +82,9 @@ public class DropManager {
         // avoid 2 eggs in the same road in a row
         if (lastType == EGG) {
             while (road == lastRoad)
-                road = getRandomNumber(0, ActivityPanel.ROADS);
+                road = getRandomNumber(0, ROADS);
             setLastRoad(road);
         } else
-            setLastRoad(getRandomNumber(0, ActivityPanel.ROADS));
+            setLastRoad(getRandomNumber(0, ROADS));
     }
 }
