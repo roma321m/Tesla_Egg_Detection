@@ -4,4 +4,8 @@ import androidx.fragment.app.Fragment;
 
 public class FragmentMap extends Fragment {
 
+    public interface CallBack_Map {
+
+    }
+
 }
