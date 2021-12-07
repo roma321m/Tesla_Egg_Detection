@@ -6,11 +6,11 @@ import android.content.SharedPreferences;
 public class MSP {
 
     private final String SP_FILE = "SP_FILE";
-    private static MSP me;
+    private static MSP single_instance;
     private SharedPreferences sharedPreferences;
 
-    public static MSP getMe() {
-        return me;
+    public static MSP getInstance() {
+        return single_instance;
     }
 
     private MSP(Context context) {
@@ -18,10 +18,10 @@ public class MSP {
     }
 
     public static MSP initHelper(Context context) {
-        if (me == null) {
-            me = new MSP(context);
+        if (single_instance == null) {
+            single_instance = new MSP(context);
         }
-        return me;
+        return single_instance;
     }
 
     public void putDouble(String KEY, double defValue) {

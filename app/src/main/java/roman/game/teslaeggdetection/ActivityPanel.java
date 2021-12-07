@@ -25,6 +25,7 @@ public class ActivityPanel extends AppCompatActivity {
     private GamePageViewManager view;
     private VibrationManager vibration;
     private TimerManager timerManager;
+    private MP mp;
 
     private int lives;
     private int score;
@@ -47,6 +48,7 @@ public class ActivityPanel extends AppCompatActivity {
         data = DataManager.getInstance();
         view = GamePageViewManager.getInstance();
         vibration = VibrationManager.getInstance();
+        mp = MP.getInstance();
         timerManager = new TimerManager(this);
         timerManager.setCallBack_Update(callBack_update);
 
@@ -54,7 +56,7 @@ public class ActivityPanel extends AppCompatActivity {
 
         panel_BTN_left.setOnClickListener(v -> moveTheCar(-1));
         panel_BTN_right.setOnClickListener(v -> moveTheCar(1));
-        panel_BTN_speed.setOnClickListener(v -> speedChangeButton());
+        panel_BTN_speed.setOnClickListener(v -> speedChange());
     }
 
     @Override
@@ -76,7 +78,7 @@ public class ActivityPanel extends AppCompatActivity {
         }
     };
 
-    private void speedChangeButton(){
+    private void speedChange(){
         timerManager.speedChange();
         int period = timerManager.getPeriod();
         if (period == TimerManager.FAST){
@@ -104,9 +106,14 @@ public class ActivityPanel extends AppCompatActivity {
         // update lives
         int dataLives = data.getLives();
         if(dataLives != lives){
-            // egg hit the car-> make vibration
-            if(lives > dataLives)
+            // egg hit the car
+
+            if(lives > dataLives){
+                mp.playEggSound();
                 vibration.makeVibration(200);
+            }else
+                mp.playLiveSound();
+
             lives = dataLives;
             view.updateLivesView(lives, panel_IMG_hearts);
             if(lives < 1){
@@ -117,6 +124,7 @@ public class ActivityPanel extends AppCompatActivity {
         // update score
         int dataScore = data.getScore();
         if (score != dataScore){
+            mp.playCoinSound();
             vibration.makeVibration(50);
             score = dataScore;
             view.updateScoreView(score, panel_LBL_score);
@@ -124,6 +132,7 @@ public class ActivityPanel extends AppCompatActivity {
     }
 
     private void lostTheGame() {
+        mp.playGameOverSound();
         finish();
     }
 
