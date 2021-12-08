@@ -9,6 +9,7 @@ public class App extends Application {
 
         GamePageViewManager.initHelper(this);
         VibrationManager.initHelper(this);
+        MySensorManager.initHelper(this);
         MP.initHelper(this);
         MSP.initHelper(this);
     }

@@ -1,6 +1,8 @@
 package roman.game.teslaeggdetection;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -25,10 +27,12 @@ public class ActivityPanel extends AppCompatActivity {
     private GamePageViewManager view;
     private VibrationManager vibration;
     private TimerManager timerManager;
+    private MySensorManager mySensorManager;
     private MP mp;
 
     private int lives;
     private int score;
+    private boolean sensorMode;
 
 
     @Override
@@ -41,7 +45,14 @@ public class ActivityPanel extends AppCompatActivity {
         //set content view AFTER ABOVE sequence (to avoid crash)
         this.setContentView(R.layout.activity_panel);
 
+        Intent intent = getIntent();
+        sensorMode = intent.getBooleanExtra(MySensorManager.SENSOR_MODE, false);
+
         findViews();
+        if (sensorMode){
+           //hideButtons();
+        }
+
         lives = MAX_LIVES;
         score = 0;
 
@@ -51,12 +62,20 @@ public class ActivityPanel extends AppCompatActivity {
         mp = MP.getInstance();
         timerManager = new TimerManager(this);
         timerManager.setCallBack_Update(callBack_update);
+        mySensorManager = MySensorManager.getInstance();
+        mySensorManager.setCallBack_Change(callBack_SensorChange);
 
         view.setStartPics(panel_IMG_views);
 
         panel_BTN_left.setOnClickListener(v -> moveTheCar(-1));
         panel_BTN_right.setOnClickListener(v -> moveTheCar(1));
         panel_BTN_speed.setOnClickListener(v -> speedChange());
+    }
+
+    private void hideButtons() {
+        panel_BTN_left.setVisibility(View.GONE);
+        panel_BTN_right.setVisibility(View.GONE);
+        panel_BTN_speed.setVisibility(View.GONE);
     }
 
     @Override
@@ -71,10 +90,39 @@ public class ActivityPanel extends AppCompatActivity {
         timerManager.stopTicker();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (sensorMode){
+            mySensorManager.startListener();
+        }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (sensorMode) {
+            mySensorManager.stopListener();
+        }
+    }
+
     TimerManager.CallBack_Update callBack_update = new TimerManager.CallBack_Update() {
         @Override
         public void update() {
             updateGame();
+        }
+    };
+
+    MySensorManager.CallBack_SensorChange callBack_SensorChange = new MySensorManager.CallBack_SensorChange() {
+        @Override
+        public void moveCar(int direction) {
+            moveTheCar(direction);
+        }
+
+        @Override
+        public void changeSpeed() {
+            speedChange();
         }
     };
 
