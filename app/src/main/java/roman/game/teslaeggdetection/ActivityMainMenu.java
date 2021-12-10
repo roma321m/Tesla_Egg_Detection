@@ -25,6 +25,14 @@ public class ActivityMainMenu extends AppCompatActivity {
         findViews();
         mySensorManager = MySensorManager.getInstance();
 
+        main_menu_BTN_Leaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(ActivityMainMenu.this, ActivityLeaderBoard.class);
+                startActivity(myIntent);
+            }
+        });
+
         main_menu_BTN_buttonGameMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -23,8 +23,6 @@ public class MySensorManager {
     private float xPos, yPos;
     private boolean fast;
 
-
-
     private MySensorManager(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);

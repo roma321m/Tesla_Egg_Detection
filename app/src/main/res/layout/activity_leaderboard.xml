@@ -28,16 +28,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="#C4ECB7" />
+            android:layout_weight="1" />
 
         <FrameLayout
             android:id="@+id/leaderboard_fragment_map"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="#E7B4FC" />
+            android:layout_weight="1" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

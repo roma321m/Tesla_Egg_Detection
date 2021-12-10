@@ -50,7 +50,7 @@ public class ActivityPanel extends AppCompatActivity {
 
         findViews();
         if (sensorMode){
-           //hideButtons();
+           hideButtons();
         }
 
         lives = MAX_LIVES;
@@ -96,7 +96,6 @@ public class ActivityPanel extends AppCompatActivity {
         if (sensorMode){
             mySensorManager.startListener();
         }
-
     }
 
     @Override
