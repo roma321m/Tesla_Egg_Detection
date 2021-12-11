@@ -21,19 +21,15 @@ public class ActivityLeaderBoard extends AppCompatActivity {
 
         fragmentMap = new FragmentMap();
         fragmentMap.setActivity(this);
-        fragmentMap.setCallBackMap(callBackMap);
         getSupportFragmentManager().beginTransaction().replace(R.id.leaderboard_fragment_map, fragmentMap).commit();
-
     }
 
     FragmentRanks.CallBack_Ranks callBackRanks = new FragmentRanks.CallBack_Ranks() {
-
-    };
-
-    FragmentMap.CallBack_Map callBackMap = new FragmentMap.CallBack_Map() {
         @Override
-        public void mapClicked(double lat, double lon) {
-
+        public void clicked(Score score, int position) {
+            double latitude = score.getLatitude();
+            double longitude = score.getLongitude();
+            fragmentMap.setLocation(latitude,longitude);
         }
     };
 

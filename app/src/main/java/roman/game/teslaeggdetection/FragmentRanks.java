@@ -11,22 +11,23 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textview.MaterialTextView;
-
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 
 public class FragmentRanks extends Fragment {
 
     public interface CallBack_Ranks {
-
+        void clicked(Score score, int position);
     }
 
     private AppCompatActivity activity;
-    private MaterialTextView fragment_ranks_LBL_title;
     private RecyclerView fragment_ranks_LST_scores;
     private MyFirebaseDB myFirebaseDB;
     private ArrayList<Score> scores;
     private CallBack_Ranks callBackRanks;
+
+    public FragmentRanks(){};
 
     public void setActivity(AppCompatActivity activity) {
         this.activity = activity;
@@ -51,6 +52,65 @@ public class FragmentRanks extends Fragment {
         };
         myFirebaseDB.getScoresList(callBack_scores);
 
+        // temp until firebase implemented
+        Score s1 = new Score()
+                .setScore(100)
+                .setDate(new Date())
+                .setLatitude(32.509566)
+                .setLongitude(34.907744)
+                .setOnLocation(false);
+        Score s2 = new Score()
+                .setScore(500)
+                .setDate(new Date())
+                .setLatitude(32.524911)
+                .setLongitude(34.906196)
+                .setOnLocation(true);
+        Score s3 = new Score()
+                .setScore(300)
+                .setDate(new Date())
+                .setLatitude(32.321380)
+                .setLongitude(34.864216)
+                .setOnLocation(false);
+        Score s4 = new Score()
+                .setScore(1500)
+                .setDate(new Date())
+                .setLatitude(32.050793)
+                .setLongitude(34.821308)
+                .setOnLocation(false);
+        Score s5 = new Score()
+                .setScore(700)
+                .setDate(new Date())
+                .setLatitude(31.257475)
+                .setLongitude(34.793119)
+                .setOnLocation(false);
+        Score s6 = new Score()
+                .setScore(2000)
+                .setDate(new Date())
+                .setLatitude(29.552717)
+                .setLongitude(34.936909)
+                .setOnLocation(false);
+        Score s7 = new Score()
+                .setScore(900)
+                .setDate(new Date())
+                .setLatitude(31.959319)
+                .setLongitude(34.802810)
+                .setOnLocation(false);
+        Score s8 = new Score()
+                .setScore(100)
+                .setDate(new Date())
+                .setLatitude(32.305654)
+                .setLongitude(34.851266)
+                .setOnLocation(false);
+        scores.add(s1);
+        scores.add(s2);
+        scores.add(s3);
+        scores.add(s4);
+        scores.add(s5);
+        scores.add(s6);
+        scores.add(s7);
+        scores.add(s8);
+        Collections.sort(scores);
+
         Adapter_Score adapter_score = new Adapter_Score(activity, scores);
 
         fragment_ranks_LST_scores.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
@@ -60,8 +120,9 @@ public class FragmentRanks extends Fragment {
 
         adapter_score.setScoreItemClickListener(new Adapter_Score.ScoreItemClickListener() {
             @Override
-            public void locationClicked(Score score) {
-                // zoom in on the map to the location...
+            public void locationClicked(Score score, int position) {
+                if(callBackRanks != null)
+                    callBackRanks.clicked(score, position);
             }
         });
 
@@ -69,7 +130,6 @@ public class FragmentRanks extends Fragment {
     }
 
     private void findViews(View view) {
-        fragment_ranks_LBL_title = view.findViewById(R.id.fragment_ranks_LBL_title);
         fragment_ranks_LST_scores = view.findViewById(R.id.fragment_ranks_LST_scores);
     }
 }

@@ -8,35 +8,40 @@
     app:cardCornerRadius="20dp"
     android:elevation="8dp"
     app:cardElevation="8dp"
-    android:layout_margin="20dp">
+    android:layout_margin="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/score_IMG_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_background_light2" />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/score_IMG_rank"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@id/score_LBL_the_date"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_alignTop="@+id/score_LBL_score"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/ic_background_dark"
             app:shapeAppearanceOverlay="@style/Circular"
             app:strokeWidth="3dp"
             app:strokeColor="#00BCd4"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/score_LBL_rank"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@id/score_LBL_the_date"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/score_LBL_score"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:autoSizeTextType="uniform"
             android:gravity="center"
@@ -48,7 +53,7 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/score_IMG_location_background"
-            android:layout_width="50dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
             android:layout_alignBottom="@id/score_LBL_the_date"
             android:layout_alignParentTop="true"
@@ -57,12 +62,12 @@
             android:layout_marginEnd="8dp"
             android:padding="6dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/ic_background_dark"
             app:shapeAppearanceOverlay="@style/RoundedSquare" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/score_IMG_location"
-            android:layout_width="50dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
             android:layout_alignBottom="@id/score_LBL_the_date"
             android:layout_alignParentTop="true"
@@ -79,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:layout_toStartOf="@id/score_IMG_location"
             android:layout_toEndOf="@id/score_IMG_rank"
@@ -88,7 +93,7 @@
             android:maxLines="1"
             android:minLines="1"
             android:text="Score:"
-            android:textSize="14sp" />
+            android:textSize="10sp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/score_LBL_score"
@@ -103,22 +108,22 @@
             android:maxLines="1"
             android:minLines="1"
             android:text="1000"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/score_LBL_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/score_LBL_score"
-            android:layout_toStartOf="@id/score_IMG_location"
             android:layout_alignStart="@id/score_LBL_title"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/score_IMG_location"
+            android:layout_toEndOf="@id/score_IMG_rank"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Date: "
-            android:textSize="14sp"
-            android:layout_toEndOf="@id/score_IMG_rank"/>
+            android:textSize="10sp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/score_LBL_the_date"
@@ -134,7 +139,7 @@
             android:maxLines="1"
             android:minLines="1"
             android:text="00/00/0000"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
