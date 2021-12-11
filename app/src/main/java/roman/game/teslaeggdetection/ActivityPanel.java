@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
+
 public class ActivityPanel extends AppCompatActivity {
     public static final int ROADS = 5;
     public static final int ITEMS = 12;
@@ -29,6 +31,7 @@ public class ActivityPanel extends AppCompatActivity {
     private TimerManager timerManager;
     private MySensorManager mySensorManager;
     private MP mp;
+    private MyFirebaseDB myFirebaseDB;
 
     private int lives;
     private int score;
@@ -60,6 +63,7 @@ public class ActivityPanel extends AppCompatActivity {
         view = GamePageViewManager.getInstance();
         vibration = VibrationManager.getInstance();
         mp = MP.getInstance();
+        myFirebaseDB = MyFirebaseDB.getInstance();
         timerManager = new TimerManager(this);
         timerManager.setCallBack_Update(callBack_update);
         mySensorManager = MySensorManager.getInstance();
@@ -180,7 +184,17 @@ public class ActivityPanel extends AppCompatActivity {
 
     private void lostTheGame() {
         mp.playGameOverSound();
+        makeResults();
         finish();
+    }
+
+    private void makeResults (){
+        double longitude = 10; // need to get from device location
+        double latitude = 10; // need to get from device location
+
+        Score s1 = new Score(score,new Date(), false, longitude, latitude);
+        myFirebaseDB.addScore(s1);// temp
+        myFirebaseDB.add(score);// temp
     }
 
     private void findViews() {

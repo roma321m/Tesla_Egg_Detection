@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:elevation="8dp"
+    app:cardElevation="8dp"
+    android:layout_margin="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/score_IMG_rank"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/score_LBL_the_date"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:shapeAppearanceOverlay="@style/Circular"
+            app:strokeWidth="3dp"
+            app:strokeColor="#00BCd4"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/score_LBL_rank"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/score_LBL_the_date"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:maxLines="1"
+            android:minLines="1"
+            android:scaleType="centerCrop"
+            android:text="1"
+            android:textColor="@color/white" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/score_IMG_location_background"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/score_LBL_the_date"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="6dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            app:shapeAppearanceOverlay="@style/RoundedSquare" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/score_IMG_location"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/score_LBL_the_date"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="6dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_location"
+            app:shapeAppearanceOverlay="@style/RoundedSquare" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/score_LBL_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/score_IMG_location"
+            android:layout_toEndOf="@id/score_IMG_rank"
+            android:ellipsize="end"
+            android:gravity="bottom"
+            android:maxLines="1"
+            android:minLines="1"
+            android:text="Score:"
+            android:textSize="14sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/score_LBL_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/score_LBL_title"
+            android:layout_alignStart="@id/score_LBL_title"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/score_IMG_location"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:minLines="1"
+            android:text="1000"
+            android:textSize="18sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/score_LBL_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/score_LBL_score"
+            android:layout_toStartOf="@id/score_IMG_location"
+            android:layout_alignStart="@id/score_LBL_title"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Date: "
+            android:textSize="14sp"
+            android:layout_toEndOf="@id/score_IMG_rank"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/score_LBL_the_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/score_LBL_date"
+            android:layout_alignStart="@id/score_LBL_title"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_toStartOf="@id/score_IMG_location"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:minLines="1"
+            android:text="00/00/0000"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
