@@ -1,7 +1,9 @@
 package roman.game.teslaeggdetection;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -9,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Date;
@@ -32,11 +35,11 @@ public class ActivityPanel extends AppCompatActivity {
     private MySensorManager mySensorManager;
     private MP mp;
     private MyFirebaseDB myFirebaseDB;
+    private LocationManager locationManager;
 
     private int lives;
     private int score;
     private boolean sensorMode;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +55,8 @@ public class ActivityPanel extends AppCompatActivity {
         sensorMode = intent.getBooleanExtra(MySensorManager.SENSOR_MODE, false);
 
         findViews();
-        if (sensorMode){
-           hideButtons();
+        if (sensorMode) {
+            hideButtons();
         }
 
         lives = MAX_LIVES;
@@ -64,8 +67,13 @@ public class ActivityPanel extends AppCompatActivity {
         vibration = VibrationManager.getInstance();
         mp = MP.getInstance();
         myFirebaseDB = MyFirebaseDB.getInstance();
+
+        locationManager = new LocationManager(this);
+        locationManager.setCallBackLocation(callBackLocation);
+
         timerManager = new TimerManager(this);
         timerManager.setCallBack_Update(callBack_update);
+
         mySensorManager = MySensorManager.getInstance();
         mySensorManager.setCallBack_Change(callBack_SensorChange);
 
@@ -97,7 +105,7 @@ public class ActivityPanel extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (sensorMode){
+        if (sensorMode) {
             mySensorManager.startListener();
         }
     }
@@ -129,12 +137,28 @@ public class ActivityPanel extends AppCompatActivity {
         }
     };
 
-    private void speedChange(){
+    LocationManager.CallBackLocation callBackLocation = new LocationManager.CallBackLocation() {
+        @Override
+        public void locationReady(double longitude, double latitude) {
+            makeResults(longitude, latitude);
+        }
+    };
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            }
+        }
+    }
+
+    private void speedChange() {
         timerManager.speedChange();
         int period = timerManager.getPeriod();
-        if (period == TimerManager.FAST){
+        if (period == TimerManager.FAST) {
             panel_BTN_speed.setBackground(getDrawable(R.drawable.img_down_arrow));
-        }else if (period == TimerManager.SLOW){
+        } else if (period == TimerManager.SLOW) {
             panel_BTN_speed.setBackground(getDrawable(R.drawable.img_up_arrow));
         }
     }
@@ -156,25 +180,25 @@ public class ActivityPanel extends AppCompatActivity {
 
         // update lives
         int dataLives = data.getLives();
-        if(dataLives != lives){
+        if (dataLives != lives) {
             // egg hit the car
 
-            if(lives > dataLives){
+            if (lives > dataLives) {
                 mp.playEggSound();
                 vibration.makeVibration(200);
-            }else
+            } else
                 mp.playLiveSound();
 
             lives = dataLives;
             view.updateLivesView(lives, panel_IMG_hearts);
-            if(lives < 1){
+            if (lives < 1) {
                 lostTheGame();
             }
         }
 
         // update score
         int dataScore = data.getScore();
-        if (score != dataScore){
+        if (score != dataScore) {
             mp.playCoinSound();
             vibration.makeVibration(50);
             score = dataScore;
@@ -184,24 +208,21 @@ public class ActivityPanel extends AppCompatActivity {
 
     private void lostTheGame() {
         mp.playGameOverSound();
-        makeResults();
+        locationManager.getLocation();
         finish();
     }
 
-    private void makeResults (){
-        double longitude = 10; // need to get from device location
-        double latitude = 10; // need to get from device location
-
-        Score s1 = new Score(score,new Date(), false, longitude, latitude);
-        myFirebaseDB.addScore(s1);// temp
-        myFirebaseDB.add(score);// temp
+    private void makeResults(double longitude, double latitude) {
+        Score s = new Score(score, new Date(), false, longitude, latitude);
+        myFirebaseDB.addScore(s);
+        Log.d("pttt", "" +s.toString());
     }
 
     private void findViews() {
         panel_LBL_score = findViewById(R.id.panel_LBL_score);
         panel_BTN_left = findViewById(R.id.panel_BTN_left);
         panel_BTN_right = findViewById(R.id.panel_BTN_right);
-        panel_BTN_speed =  findViewById(R.id.panel_BTN_speed);
+        panel_BTN_speed = findViewById(R.id.panel_BTN_speed);
         panel_IMG_hearts = new ImageView[]{findViewById(R.id.panel_IMG_heart1), findViewById(R.id.panel_IMG_heart2), findViewById(R.id.panel_IMG_heart3)};
         panel_IMG_views = new ImageView[][]{
                 {findViewById(R.id.panel_IMG_chicken0), findViewById(R.id.panel_IMG_chicken1), findViewById(R.id.panel_IMG_chicken2), findViewById(R.id.panel_IMG_chicken3), findViewById(R.id.panel_IMG_chicken4)},

@@ -71,4 +71,15 @@ public class Score implements Comparable{
         } catch (Exception ex) {}
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Score { " +
+                "score:" + score +
+                ", date:" + date +
+                ", onLocation:" + onLocation +
+                ", latitude:" + latitude +
+                ", longitude:" + longitude +
+                "} ";
+    }
 }
