@@ -1,6 +1,8 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Managers;
 
 import android.util.Log;
+
+import roman.game.teslaeggdetection.Activities.ActivityPanel;
 
 public class DataManager {
     private static final int ITEMS = ActivityPanel.ITEMS;

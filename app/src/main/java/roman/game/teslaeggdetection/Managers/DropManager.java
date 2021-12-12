@@ -1,4 +1,6 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Managers;
+
+import roman.game.teslaeggdetection.Activities.ActivityPanel;
 
 public class DropManager {
     private static final int ITEMS = ActivityPanel.ITEMS;

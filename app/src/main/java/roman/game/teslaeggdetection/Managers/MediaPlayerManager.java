@@ -1,4 +1,4 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Managers;
 
 import android.content.Context;
 import android.media.AudioAttributes;
@@ -6,18 +6,20 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 
-public class MP {
+import roman.game.teslaeggdetection.R;
 
-    private static MP single_instance;
+public class MediaPlayerManager {
+
+    private static MediaPlayerManager single_instance;
     private Context context;
     private SoundPool soundPool;
     private int coin, heart, egg, gameOver, background; // sounds
 
-    public static MP getInstance() {
+    public static MediaPlayerManager getInstance() {
         return single_instance;
     }
 
-    private MP(Context context) {
+    private MediaPlayerManager(Context context) {
         this.context = context;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
@@ -35,9 +37,9 @@ public class MP {
         loadSounds();
     }
 
-    public static MP initHelper(Context context) {
+    public static MediaPlayerManager initHelper(Context context) {
         if (single_instance == null) {
-            single_instance = new MP(context);
+            single_instance = new MediaPlayerManager(context);
         }
         return single_instance;
     }

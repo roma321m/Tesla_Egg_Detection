@@ -1,4 +1,4 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
+
+import roman.game.teslaeggdetection.Objects.Score;
+import roman.game.teslaeggdetection.R;
 
 public class Adapter_Score extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

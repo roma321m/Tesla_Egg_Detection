@@ -1,4 +1,4 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Managers;
 
 import android.content.Context;
 import android.os.Build;

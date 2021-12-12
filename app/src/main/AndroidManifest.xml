@@ -32,7 +32,7 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".ActivitySplash"
+            android:name=".Activities.ActivitySplash"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -43,17 +43,17 @@
         </activity>
 
         <activity
-            android:name=".ActivityPanel"
+            android:name=".Activities.ActivityPanel"
             android:exported="true"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".ActivityMainMenu"
+            android:name=".Activities.ActivityMainMenu"
             android:exported="true"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".ActivityLeaderBoard"
+            android:name=".Activities.ActivityLeaderBoard"
             android:exported="true"
             android:screenOrientation="portrait"/>
 

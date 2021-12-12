@@ -1,4 +1,4 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.DB;
 
 import android.content.Context;
 import android.content.SharedPreferences;

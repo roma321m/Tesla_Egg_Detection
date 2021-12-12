@@ -1,4 +1,4 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Activities;
 
 import android.animation.Animator;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import roman.game.teslaeggdetection.R;
 
 
 public class ActivitySplash extends AppCompatActivity {

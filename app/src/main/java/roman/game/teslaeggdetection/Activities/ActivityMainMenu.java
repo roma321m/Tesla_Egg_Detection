@@ -1,4 +1,4 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import roman.game.teslaeggdetection.Managers.MySensorManager;
+import roman.game.teslaeggdetection.R;
 
 
 public class ActivityMainMenu extends AppCompatActivity {

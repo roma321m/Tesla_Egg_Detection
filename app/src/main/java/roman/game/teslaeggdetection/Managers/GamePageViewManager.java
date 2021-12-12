@@ -1,4 +1,4 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Managers;
 
 import android.content.Context;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import roman.game.teslaeggdetection.Activities.ActivityPanel;
+import roman.game.teslaeggdetection.R;
 
 public class GamePageViewManager {
     private static final int ITEMS = ActivityPanel.ITEMS;

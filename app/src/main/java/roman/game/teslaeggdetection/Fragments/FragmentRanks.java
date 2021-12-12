@@ -1,4 +1,4 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+
+import roman.game.teslaeggdetection.Adapters.Adapter_Score;
+import roman.game.teslaeggdetection.DB.MyFirebaseDB;
+import roman.game.teslaeggdetection.R;
+import roman.game.teslaeggdetection.Objects.Score;
 
 public class FragmentRanks extends Fragment {
 

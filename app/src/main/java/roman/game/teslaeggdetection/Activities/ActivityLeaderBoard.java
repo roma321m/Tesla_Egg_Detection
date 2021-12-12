@@ -1,8 +1,13 @@
-package roman.game.teslaeggdetection;
+package roman.game.teslaeggdetection.Activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import roman.game.teslaeggdetection.Fragments.FragmentMap;
+import roman.game.teslaeggdetection.Fragments.FragmentRanks;
+import roman.game.teslaeggdetection.R;
+import roman.game.teslaeggdetection.Objects.Score;
 
 public class ActivityLeaderBoard extends AppCompatActivity {
 
