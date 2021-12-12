@@ -10,8 +10,8 @@ import java.util.Collections;
 import roman.game.teslaeggdetection.DB.MyFirebaseDB;
 import roman.game.teslaeggdetection.Fragments.FragmentMap;
 import roman.game.teslaeggdetection.Fragments.FragmentRanks;
-import roman.game.teslaeggdetection.R;
 import roman.game.teslaeggdetection.Objects.Score;
+import roman.game.teslaeggdetection.R;
 
 public class ActivityLeaderBoard extends AppCompatActivity {
 
@@ -30,10 +30,10 @@ public class ActivityLeaderBoard extends AppCompatActivity {
         scores = new ArrayList<>();
         MyFirebaseDB.CallBack_Scores callBack_scores = new MyFirebaseDB.CallBack_Scores() {
             @Override
-            public void dataReady(ArrayList<Score> sc, int position) {
+            public void dataReady(ArrayList<Score> sc) {
                 scores = sc;
                 Collections.sort(scores);
-                fragmentRanks.setScores(scores, position);
+                fragmentRanks.setScores(scores);
             }
         };
         myFirebaseDB.getScoresList(callBack_scores);
@@ -50,10 +50,10 @@ public class ActivityLeaderBoard extends AppCompatActivity {
 
     FragmentRanks.CallBack_Ranks callBackRanks = new FragmentRanks.CallBack_Ranks() {
         @Override
-        public void clicked(Score score, int position) {
+        public void clicked(Score score) {
             double latitude = score.getLatitude();
             double longitude = score.getLongitude();
-            fragmentMap.setLocation(latitude,longitude);
+            fragmentMap.setLocation(latitude, longitude);
         }
     };
 

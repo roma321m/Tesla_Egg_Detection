@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import roman.game.teslaeggdetection.DB.MyFirebaseDB;
+import roman.game.teslaeggdetection.Managers.LocationManager;
 import roman.game.teslaeggdetection.Managers.MySensorManager;
 import roman.game.teslaeggdetection.R;
 
@@ -28,9 +30,14 @@ public class ActivityMainMenu extends AppCompatActivity {
         findViews();
         mySensorManager = MySensorManager.getInstance();
 
+        LocationManager locationManager = new LocationManager(this);
+        locationManager.getLocation();
+
         main_menu_BTN_Leaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MyFirebaseDB mydb = MyFirebaseDB.getInstance();
+                mydb.setOnLocationFalse();
                 Intent myIntent = new Intent(ActivityMainMenu.this, ActivityLeaderBoard.class);
                 startActivity(myIntent);
             }

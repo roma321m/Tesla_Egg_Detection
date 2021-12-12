@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +18,7 @@ import roman.game.teslaeggdetection.R;
 public class Adapter_Score extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface ScoreItemClickListener {
-        void locationClicked(Score score, int position);
+        void locationClicked(Score score);
     }
 
     private Activity activity;
@@ -45,12 +46,12 @@ public class Adapter_Score extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         ScoreViewHolder scoreViewHolder = (ScoreViewHolder) holder;
         Score s = getItem(position);
-        scoreViewHolder.score_LBL_rank.setText("" + (position+1));
+        scoreViewHolder.score_LBL_rank.setText("" + (position + 1));
         scoreViewHolder.score_LBL_score.setText("" + s.getScore());
         scoreViewHolder.score_LBL_the_date.setText("" + s.getDate().toString());
-        if(s.isOnLocation()){
+        if (s.isOnLocation()) {
             scoreViewHolder.score_IMG_background.setImageResource(R.drawable.ic_background_light);
-        }else
+        } else
             scoreViewHolder.score_IMG_background.setImageResource(R.drawable.ic_background_light2);
     }
 
@@ -83,8 +84,8 @@ public class Adapter_Score extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             score_IMG_location.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (scoreItemClickListener != null){
-                        scoreItemClickListener.locationClicked(getItem(getAdapterPosition()), getAdapterPosition());
+                    if (scoreItemClickListener != null) {
+                        scoreItemClickListener.locationClicked(getItem(getAdapterPosition()));
                     }
                 }
             });

@@ -23,7 +23,7 @@ public class MyFirebaseDB {
     private DatabaseReference scoreRef;
     private static MyFirebaseDB single_instance;
 
-    private MyFirebaseDB(){
+    private MyFirebaseDB() {
         database = FirebaseDatabase.getInstance();
         scoreRef = database.getReference("Scores");
     }
@@ -36,10 +36,10 @@ public class MyFirebaseDB {
     }
 
     public interface CallBack_Scores {
-        void dataReady(ArrayList<Score> scores, int position);
+        void dataReady(ArrayList<Score> scores);
     }
 
-    public void addScore(Score score){
+    public void addScore(Score score) {
         scoreRef.push().setValue(score).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -53,43 +53,42 @@ public class MyFirebaseDB {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Score> scores = new ArrayList<>();
-                for(DataSnapshot ch: dataSnapshot.getChildren()){
+                for (DataSnapshot ch : dataSnapshot.getChildren()) {
                     try {
                         Score s1 = ch.getValue(Score.class);
-                        if(s1.isOnLocation()){
+                        if (s1.isOnLocation()) {
                             s1.setOnLocation(false);
                             scoreRef.child(ch.getKey()).setValue(s1);
                         }
-                    } catch (Exception ex) {}
+                    } catch (Exception ex) {
+                    }
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
     }
 
-    public void getScoresList(CallBack_Scores callBack_scores){
+    public void getScoresList(CallBack_Scores callBack_scores) {
         scoreRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Score> scores = new ArrayList<>();
-                int position = 0;
-                int i = 0;
-                for(DataSnapshot child: dataSnapshot.getChildren()){
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
                     try {
                         Score s1 = child.getValue(Score.class);
                         scores.add(s1);
-                        if(s1.isOnLocation())
-                            position = i;
-                    } catch (Exception ex) {}
-                    i++;
+                    } catch (Exception ex) {
+                    }
                 }
                 if (callBack_scores != null) {
                     Collections.sort(scores);
-                    callBack_scores.dataReady(scores, position);
+                    callBack_scores.dataReady(scores);
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
