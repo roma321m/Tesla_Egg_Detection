@@ -219,12 +219,15 @@ public class ActivityPanel extends AppCompatActivity {
 
     private void lostTheGame() {
         mediaPlayerManager.playGameOverSound();
+        myFirebaseDB.setOnLocationFalse();
         locationManager.getLocation();
         finish();
+        Intent myIntent = new Intent(ActivityPanel.this, ActivityLeaderBoard.class);
+        startActivity(myIntent);
     }
 
     private void makeResults(double longitude, double latitude) {
-        Score s = new Score(score, new Date(), false, longitude, latitude);
+        Score s = new Score(score, new Date(), true, longitude, latitude);
         myFirebaseDB.addScore(s);
         Log.d("pttt", "" + s.toString());
     }

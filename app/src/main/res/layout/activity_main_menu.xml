@@ -8,13 +8,22 @@
     tools:context=".Activities.ActivityMainMenu"
     android:keepScreenOn="true">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_background_light"
+        android:scaleType="centerCrop"/>
+
     <Button
         android:id="@+id/main_menu_BTN_ButtonGameMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
+        android:background="#7296ef"
         android:text="Button Game Mode"
         android:textAllCaps="false"
+        android:textSize="24sp"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,8 +33,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:background="#7296ef"
+        android:textSize="24sp"
         android:text="Sensors Game Mode"
         android:textAllCaps="false"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         app:layout_constraintEnd_toEndOf="@+id/main_menu_BTN_ButtonGameMode"
         app:layout_constraintStart_toStartOf="@+id/main_menu_BTN_ButtonGameMode"
         app:layout_constraintTop_toBottomOf="@+id/main_menu_BTN_ButtonGameMode"/>
@@ -35,8 +47,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:background="#7296ef"
+        android:textSize="24sp"
         android:text="Leaderboard"
         android:textAllCaps="false"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         app:layout_constraintEnd_toEndOf="@+id/main_menu_BTN_SensorsGameMode"
         app:layout_constraintStart_toStartOf="@+id/main_menu_BTN_SensorsGameMode"
         app:layout_constraintTop_toBottomOf="@+id/main_menu_BTN_SensorsGameMode"/>

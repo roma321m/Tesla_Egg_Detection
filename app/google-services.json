@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "37281292063",
-    "project_id": "tesla-egg-detection",
-    "storage_bucket": "tesla-egg-detection.appspot.com"
+    "project_number": "688681920446",
+    "project_id": "tesla-egg-detection-b6be7",
+    "storage_bucket": "tesla-egg-detection-b6be7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:37281292063:android:94431551af55291a8f9a2a",
+        "mobilesdk_app_id": "1:688681920446:android:45d4d8112c2b2d2aa87bef",
         "android_client_info": {
           "package_name": "roman.game.teslaeggdetection"
         }
       },
       "oauth_client": [
         {
-          "client_id": "37281292063-mcbkao02u3tkubrk768v2i5ts9begror.apps.googleusercontent.com",
+          "client_id": "688681920446-sjfl44sg5j9mtatpntt494nnipr8piht.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +27,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "37281292063-mcbkao02u3tkubrk768v2i5ts9begror.apps.googleusercontent.com",
+              "client_id": "688681920446-sjfl44sg5j9mtatpntt494nnipr8piht.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
