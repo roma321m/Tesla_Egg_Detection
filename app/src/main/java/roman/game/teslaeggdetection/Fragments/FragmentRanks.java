@@ -29,9 +29,7 @@ public class FragmentRanks extends Fragment {
     private LinearLayoutManager linearLayoutManager;
 
     public FragmentRanks() {
-    }
-
-    ;
+    };
 
     public void setActivity(AppCompatActivity activity) {
         this.activity = activity;
